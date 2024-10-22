@@ -5,27 +5,28 @@ const NewsApp = () => {
   const [news, setNews] = useState([]);
   const [search, setSearch] = useState("India");
 
+  const handleChipClick = async (val) => {
+    setSearch(val);
+    await fetchNews(val);
+  };
   const handleInput = (e) => {
     setSearch(e.target.value);
   };
-  const handleSearchClick = () => {
-    fetchNews();
-  };
-  const handleChipClick = (val) => {
-    setSearch(val);
-    fetchNews();
+  const handleSearchClick = async () => {
+    await fetchNews(search);
   };
 
-  const fetchNews = async () => {
+  const fetchNews = async (search_val) => {
+    console.log(search_val);
     const key = import.meta.env.VITE_NEWSAPI_KEY.trim();
     const respone = await fetch(
-      `https://gnews.io/api/v4/search?q=${search}&apikey=${key}&country=in&max=9&lang=en`
+      `https://gnews.io/api/v4/search?q=${search_val}&apikey=${key}&country=in&max=9&lang=en`
     );
     const data = await respone.json();
     setNews(data.articles);
   };
   useEffect(() => {
-    fetchNews();
+    fetchNews(search);
   }, []);
   return (
     <div className="container">
