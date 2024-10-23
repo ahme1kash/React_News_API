@@ -56,7 +56,7 @@ const NewsApp = () => {
       <nav>
         <div className="news-div">
           <img className="news-pic" src={newspic} alt="News Icon" />
-          <h1>Todays News</h1>
+          <h1>Today's News</h1>
         </div>
         <ul>
           <a>World</a>
