@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Card from "../Card/Card.jsx";
+import newspic from "../pic/newspic.png";
+
 import "./NewsApp.css";
 const NewsApp = () => {
   const [news, setNews] = useState([]);
   const [search, setSearch] = useState("India");
-
+  const [selectedValue, setSelectedValue] = useState("India");
   const handleChipClick = async (val) => {
     setSearch(val);
     await fetchNews(val);
@@ -15,14 +17,35 @@ const NewsApp = () => {
   const handleSearchClick = async () => {
     await fetchNews(search);
   };
+  const handleSelect = async (value) => {
+    setSelectedValue(value);
+    setSearch(value);
+    fetchNews(value);
+  };
 
   const fetchNews = async (search_val) => {
+    let country_url,
+      ind_url,
+      response,
+      flag = 0;
+
     console.log(search_val);
     const key = import.meta.env.VITE_NEWSAPI_KEY.trim();
-    const respone = await fetch(
-      `https://gnews.io/api/v4/search?q=${search_val}&apikey=${key}&country=in&max=9&lang=en`
-    );
-    const data = await respone.json();
+    const country_arr = ["in", "pk", "ae", "us", "gb", "au"];
+    if (country_arr.includes(search_val)) {
+      console.log(search_val, "34");
+      country_url = `https://gnews.io/api/v4/top-headlines?category=general&apikey=${key}&country=${search_val}&lang=en&max=9`;
+      flag = 1;
+    } else {
+      ind_url = `https://gnews.io/api/v4/search?q=${search_val}&apikey=${key}&country=in&max=9&lang=en`;
+    }
+    if (flag == 1) {
+      response = await fetch(country_url);
+    } else {
+      response = await fetch(ind_url);
+    }
+    console.log(flag, search_val);
+    const data = await response.json();
     setNews(data.articles);
   };
   useEffect(() => {
@@ -31,25 +54,52 @@ const NewsApp = () => {
   return (
     <div className="container">
       <nav>
-        <div>
-          <h1>Current News</h1>
+        <div className="news-div">
+          <img className="news-pic" src={newspic} alt="News Icon" />
+          <h1>Todays News</h1>
         </div>
         <ul>
-          <a>All News</a>
+          <a>World</a>
           <a>Trending</a>
         </ul>
+        <div className="select-container">
+          <select
+            className="select-tags"
+            name="country"
+            id="country"
+            value={selectedValue}
+            onChange={(e) => {
+              handleSelect(e.target.value);
+            }}
+          >
+            <option value="in">India</option>
+            <option value="us">USA</option>
+            <option value="gb">England</option>
+            <option value="pk">Pakistan</option>
+            <option value="au">Australia</option>
+            {/* <option value="RU">Russia</option>
+            <option value="cn">China</option> */}
+          </select>
+        </div>
 
-        <div className="search-bar">
-          <input
-            type="text"
-            placeholder="Search News Here"
-            onChange={handleInput}
-          />
-          <button onClick={handleSearchClick}>Search</button>
+        <div className="search-container">
+          <div className="search-bar">
+            <input
+              type="text"
+              placeholder="Search News Here"
+              onChange={handleInput}
+              className="search-box"
+            />
+            <button className="search-btn" onClick={handleSearchClick}>
+              Search
+            </button>
+          </div>
         </div>
       </nav>
 
-      <div className="head">Daily News Feed</div>
+      <div className="head">
+        <h3>Daily News Feed</h3>
+      </div>
       <div className="category-btn">
         <button
           onClick={(e) => {

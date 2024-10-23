@@ -1,8 +1,10 @@
 .card-container {
     display: flex;
     justify-content: center;
-    gap: 41px;
+    gap: 4.5em;
     flex-wrap: wrap;
+    width: 80%;
+    margin-left: 10%;
 
 }
 
@@ -14,8 +16,8 @@
     border-radius: 3px;
     margin-top: 5em;
     margin-bottom: 2em;
-    border: 1px solid rgb(236, 236, 236);
-    background: linear-gradient(10deg, rgb(250, 228, 215), rgb(240, 240, 156));
+    border: 1px solid rgb(108, 255, 189);
+    background: linear-gradient(70deg, rgb(15, 78, 78), rgba(32, 31, 27, 0.993));
     filter: drop-shadow(1px 1px 1px rgb(137, 139, 127));
 }
 

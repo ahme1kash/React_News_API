@@ -2,25 +2,40 @@ code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New";
 }
 
-.container {
-    /* display: inline; */
+.search-container {
+    flex-grow: 0.8;
+    display: flex;
+    justify-content: flex-end;
+}
 
+.search-btn {
+    color: white;
+    position: static;
+    /* justify-content: right; */
+}
+
+.container {
     justify-content: center;
     align-items: center;
-    position: absolute;
-    left: 12%;
-    right: 12%;
+    color: white;
+    width: 100%;
+    max-width: 110%;
+
+}
+
+
+.container ul {
+    color: white
 }
 
 nav {
     display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    background: linear-gradient(180deg, rgb(255, 31, 31), rgb(214, 214, 214), rgb(186, 1, 1));
-    padding: 9px;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgb(26, 20, 20);
     border-radius: 6px;
-    max-width: 70vw;
-    margin-top: 1em;
+    width: 100%;
+    margin-top: 0.2em;
 
 }
 
@@ -31,13 +46,21 @@ nav input {
     font-size: 18px;
     border: 2px solid rgb(214, 186, 253);
     outline: none;
+
 }
 
 .search-bar {
     display: flex;
     align-items: center;
+    /* float: right; */
     gap: 16px;
+    position: relative;
+    margin-left: 35%;
+    max-width: 340px;
+    width: 100%;
 }
+
+
 
 nav button {
     width: 70px;
@@ -45,7 +68,7 @@ nav button {
     background-color: blue;
     border: none;
     border-radius: 2px;
-    color: white;
+
     font-size: 16px;
     cursor: pointer;
     text-align: center;
@@ -85,8 +108,9 @@ nav ul {
     text-align: center;
     font-weight: 600;
     font-size: 26px;
-    margin-top: 1em;
+    margin-top: 2em;
     margin-bottom: 2em;
+    color: rgb(229, 0, 0)
 }
 
 .footer {
@@ -95,4 +119,41 @@ nav ul {
     display: flex;
     align-items: center;
     justify-content: center;
+    color: black
+}
+
+.select-tags {
+    width: 17em;
+    height: 1.8em;
+    margin-left: 2.5%;
+    margin-top: 1.5%;
+
+}
+
+.select-container {
+    width: 15em;
+    height: 2em;
+    background-color: rgb(169, 169, 169);
+}
+
+option {
+    text-align: center;
+    color: rgb(11, 11, 21);
+    font-size: 1.4em;
+    outline: none;
+    border: none;
+
+
+}
+
+.news-pic {
+    height: 3em;
+    width: 3.5em;
+    background-color: rgb(225, 206, 0);
+    margin-top: 0.6em;
+    margin-right: 0.6em;
+}
+
+.news-div {
+    display: flex;
 }
