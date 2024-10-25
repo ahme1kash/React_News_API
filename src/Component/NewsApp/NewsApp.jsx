@@ -17,10 +17,10 @@ const NewsApp = () => {
   const handleSearchClick = async () => {
     await fetchNews(search);
   };
-  const handleSelect = async (value) => {
-    setSelectedValue(value);
-    setSearch(value);
-    fetchNews(value);
+  const handleSelect = async (val) => {
+    setSelectedValue(val);
+    setSearch(val);
+    fetchNews(val);
   };
 
   const fetchNews = async (search_val) => {
@@ -98,7 +98,7 @@ const NewsApp = () => {
       </nav>
 
       <div className="head">
-        <h3>Daily News Feed</h3>
+        <h3>News Digest</h3>
       </div>
       <div className="category-btn">
         <button
