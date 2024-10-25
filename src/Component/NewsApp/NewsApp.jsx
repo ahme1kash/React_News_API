@@ -98,7 +98,7 @@ const NewsApp = () => {
       </nav>
 
       <div className="head">
-        <h3>News Digest</h3>
+        <h1>Daily News Digest</h1>
       </div>
       <div className="category-btn">
         <button
